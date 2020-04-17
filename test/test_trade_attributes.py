@@ -24,7 +24,7 @@ def test_basic_input():
     # Write the data out to a file for input
     with open("input.csv", "w") as write_file:
         for line in BASIC_TEST_INPUT:
-            write_file.write(", ".join([str(item) for item in line]) + "\n")
+            write_file.write(",".join([str(item) for item in line]) + "\n")
 
     # Run the code
     trade_attributes.process_file()
