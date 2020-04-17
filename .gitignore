@@ -1,3 +1,16 @@
+
+# pycharm files
+.idea/
+
+# Local test csv files
+*.csv
+
+
+
+###################################
+# Below is github python defaults #
+###################################
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
