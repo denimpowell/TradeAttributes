@@ -2,8 +2,8 @@
 # pycharm files
 .idea/
 
-# Local test csv files
-*.csv
+# Local csv files
+app_files/
 
 
 

@@ -1,11 +1,12 @@
 
 import logging
+import sys
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)-8s %(message)s')
 logger = logging.getLogger()
 
 
-def process_file():
+def process_file(process_dir="/app_files"):
     """
     Main processing - grabs local file 'input.csv', outputs locally 'output.csv'
 
@@ -21,7 +22,7 @@ def process_file():
     max_trade_price = {}
     weighted_avg_top = {}
 
-    with open("input.csv", "r") as read_file:
+    with open(process_dir + "/input.csv", "r") as read_file:
 
         for line in read_file:
 
@@ -60,7 +61,7 @@ def process_file():
 
     logger.info("File read complete, writing output")
 
-    with open("output.csv", "w") as write_file:
+    with open(process_dir + "/output.csv", "w") as write_file:
         for symbol in sorted(max_time_between_trades.keys()):
             write_file.write(",".join([symbol,
                                        str(max_time_between_trades[symbol]),
@@ -76,4 +77,9 @@ def process_file():
 if __name__ == '__main__':
 
     logger.info("Application logging is configured")
-    process_file()
+
+    print(str(sys.argv))
+    if len(sys.argv) == 1:
+        process_file()
+    else:
+        process_file(process_dir=sys.argv[1])

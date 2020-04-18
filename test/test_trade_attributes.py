@@ -1,5 +1,6 @@
 
 import trade_attributes
+from pathlib import Path
 
 # Just laid out this way so no accidental spaces
 BASIC_TEST_INPUT = [
@@ -19,18 +20,22 @@ BASIC_TEST_OUTPUT = [
     ["aac", 3081, 41,  559,  638]
 ]
 
+
 def test_basic_input():
 
+    # Create directory if not existing
+    Path("./app_files").mkdir(parents=True, exist_ok=True)
+
     # Write the data out to a file for input
-    with open("input.csv", "w") as write_file:
+    with open("./app_files/input.csv", "w") as write_file:
         for line in BASIC_TEST_INPUT:
             write_file.write(",".join([str(item) for item in line]) + "\n")
 
     # Run the code
-    trade_attributes.process_file()
+    trade_attributes.process_file(process_dir="./app_files")
 
     # Validate output
-    with open("output.csv", "r") as read_file:
+    with open("./app_files/output.csv", "r") as read_file:
         for index, line in enumerate(read_file):
 
             written_attributes = line.strip().split(",")
