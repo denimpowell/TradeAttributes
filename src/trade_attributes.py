@@ -8,9 +8,8 @@ logger = logging.getLogger()
 
 def process_file(process_dir="/app_files"):
     """
-    Main processing - grabs local file 'input.csv', outputs locally 'output.csv'
-
-    Major assumption of this process is that 'TimeStamp is increasing or same as previous tick'
+    Main processing - grabs file from process_dir 'input.csv', outputs to process_dir 'output.csv'
+    :param process_dir: The directory where both input file is read and output file is written
     """
 
     logger.info("process_file initiated, starting file read")
